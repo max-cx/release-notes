@@ -1,0 +1,109 @@
+= Release Notes Organizer
+Max Leonov <mleonov@redhat.com>
+
+Use this single file to manage preparation of all your release notes in your text editor.
+
+= How-to
+
+1. Customize this file and turn it into your personal template file.
+2. Make a new copy of your personal template file for each release.
+3. Rename the file according to the release number.
+4. Enter the Jira issue URLs and names of the reviewing SMEs to a dashboard list to keep track of your progress.
+5. To save time, group Jira issues that relate to the same reviewing SME to ask the SME to review the whole batch.
+6. Collect and paste all relevant info (incl. the initial draft by the SME) for each release note further below.
+7. Next to the collected info, now having everything at your fingertips, author your release note draft.
+8. Because this is an .adoc file, you can use a live AsciiDoc preview in your editor or browser.
+8. Update your progress on the relevant lines in the dashboard list.
+
+= Legend
+
+.The dashboard list format
+----
+ReviewingSMEName[optional:/AssigneeDeveloperName]
+1234 JiraIssueURL JiraRNStatus OptionalNote
+1234 JiraIssueURL JiraRNStatus OptionalNote
+1234 JiraIssueURL JiraRNStatus OptionalNote
+...
+ReviewingSMEName[optional:/AssigneeDeveloperName]
+1234 JiraIssueURL JiraRNStatus OptionalNote
+1234 JiraIssueURL JiraRNStatus OptionalNote
+1234 JiraIssueURL JiraRNStatus OptionalNote
+...
+ReviewingSMEName[optional:/AssigneeDeveloperName]
+1234 JiraIssueURL JiraRNStatus OptionalNote
+1234 JiraIssueURL JiraRNStatus OptionalNote
+1234 JiraIssueURL JiraRNStatus OptionalNote
+...
+----
+
+.Progress columns for the dashboard list
+----
+[1]>[2]>[3]>[4]
+ |   |   |   |
+ |   |   |   └─ Step 4: checking the *Release Note Status* Jira field value
+ |   |   └─ Step 3: language/peer review
+ |   └─ Step 2: engineering review or waiting for technical info/updates
+ └─ Step 1: drafting/authoring the release note
+
+Status values for steps:
+0 - not started yet or not requested yet
+? - waiting for more info or a response to a question or a requested review
+✔ - completed (copy-paste from here)
+✘ - inapplicable (copy-paste from here)
+----
+
+.A dashboard list excerpt
+====
+----
+...
+Nick
+✔✔✔✔ https://issues.redhat.com/browse/CRW-33333 Done
+✘✘✘✘ https://issues.redhat.com/browse/CRW-22222 Rejected
+✔?00 https://issues.redhat.com/browse/CRW-44444 In progress
+0000 https://issues.redhat.com/browse/CRW-55555 Proposed
+Nick/Nikita
+✘✘✘✘ https://issues.redhat.com/browse/CRW-11111 Rejected
+...
+----
+====
+
+'''
+
+.The rest of this file is a series of sections, one per RN item from the dashboard list, separated by three single quotation marks, '''
+----
+[link to the Jira issue]
+////
+[links to Slack conversations with reviewing SMEs and peer reviewers]
+[links to various pages that contain relevant info]
+[pasted useful technical bits that you might use in this release note text]
+[your notes about this release note]
+////
+[draft of the release note text]
+----
+
+'''
+
+https://issues.redhat.com/browse/CRW-33333
+////
+https://slack.com/archives/...
+https://slack.com/archives/...
+https://docs.openstack.org/cinder/rocky/configuration/block-storage/drivers/lvm-volume-driver.html
+////
+
+= Release note example 1
+
+Before this update, the loopback device for Cinder iSCSI/LVM backend was not recreated after a system restart, which prevented the cinder-volume service from restarting. With this update, a systemd service recreates the loopback device and the Cinder iSCSI/LVM backend persists after a restart.
+
+'''
+
+https://issues.redhat.com/browse/CRW-22222
+////
+https://slack.com/archives/...
+https://www.redhat.com/en/resources/openstack-platform-datasheet
+////
+
+= Release note example 2
+
+In Red Hat OpenStack Platform (RHOSP) 14, the director graphical user interface is deprecated and is planned to be removed in a future release. Red Hat will provide bug fixes and support for this feature during the current release lifecycle, but this feature will no longer receive enhancements and will be removed.
+
+'''
